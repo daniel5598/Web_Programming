@@ -1,0 +1,32 @@
+html, body{
+	margin: 0px; padding: 0px; height: 100%; 
+}
+
+header{
+	margin: 0px; padding: 0px; height: 15%; 
+	background-color: yellow;
+}
+
+h1{
+	margin: 0px; 
+	text-align: center;
+}
+
+form{
+	height: 78%;
+	background-color: pink;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	padding-bottom: 1px;
+}
+
+footer{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	height: 10%;
+	background-color: mediumpurple;
+}
+
+
+
