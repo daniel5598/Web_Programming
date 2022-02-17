@@ -1,0 +1,29 @@
+html, body{
+	margin: 0px; padding: 0px; height: 100%;
+}
+
+h1{
+	margin: 0px; padding: 0px; text-align: center;
+}
+
+header{
+	height: 20%; background: yellow;
+}
+
+nav{
+	 width: 20%; height: 110%; float: left; background: orange;
+}
+
+section {
+	width: 80%; height: 110%;
+	float: left;
+	background-color: skyblue; 
+}
+
+footer{
+	padding-top: 5px;
+	padding-bottom: 20px;
+	height: 10%;
+	clear: left;
+	background-color: mediumpurple;
+}

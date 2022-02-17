@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>갬블링 게임</title>
+
+<style>
+	table {
+		border : 1px solid violet;
+		border-collapse : collapse; 
+	}
+	td {
+		width : 50px;
+		height : 50px;
+		padding : 0px;
+		font : italic 50px consolas, sans-serif;
+		color : blue;
+		text-align : center;
+		background : linen;
+	}
+	div#msg {
+		font : italic 18px consolas, sans-serif;
+		color : magenta;
+		margin-top : 10px;
+	}
+</style>
+
+<script>
+	var gameon = true; // 게임이 진행 중이면 true
+	var gameArray = [0, 0, 0]; // 숫자 3개를 저장하는 배열
+	
+	function gen(e) {
+		if(gameon == false) // 게임 진행 중이 아니면 종료
+			return;
+
+		var n = Math.floor(Math.random()*3); // 0~2 사이의 10진 난수
+		var obj = e.target; // 이벤트가 발생한 타겟, 9장에서
+		
+		(obj.innerHTML) = n; // 난수를 화면에 표시하려면?
+
+		if(obj.id == "first"){ // 첫 번째 칸을 클릭했으면
+			gameArray[0]=n; // 이곳에 루틴 추가
+		} 
+		
+		else if(obj.id == "second"){ // 두 번째 칸을 클릭했으면
+			gameArray[1]=n; // 이곳에 루틴 추가
+		} 
+		
+		else{ // 세 번째 칸을 클릭했으면
+			gameArray[2]=n; // 이곳에 루틴 추가
+			var textMsg=document.getElementById("msg")
+			if(gameArray[0]==gameArray[1] && gameArray[1]==gameArray[2]){
+				textMsg.innerHTML="Success (Click here to do again)";
+			}
+			else{
+				textMsg.innerHTML="Fail (Click here to do again)";
+			}
+			gameon=false; // 게임 종료 표시
+		} 
+	}
+
+	function reset() {
+		for(num=0; num<gameArray.length; num++){
+			gameArray[num]=0 // 배열의 값을 모두 0으로 초기화
+		}
+		
+		// 화면의 숫자 3개와 msg 콘텐츠를 모두 0으로 초기화
+		document.getElementById("first").innerHTML=0; 
+		document.getElementById("second").innerHTML=0;
+		document.getElementById("third").innerHTML=0;
+		document.getElementById("msg").innerHTML="";
+		gameon = true; // 게임을 새롭게 시작
+	}
+</script>
+</head>
+
+<body>
+<h3>갬블링 게임</h3>
+<p>각 숫자를 클릭하면 0에서 2사이의 난수로 바뀝니다. 모두 같은 수가 나오면 승리합니다.</p>
+<hr>
+
+<table>
+	<tr> <!-- 클릭한 칸을 id로 구분, 모두 함수 gen() 호출-->
+		<td id="first" onclick="gen(event)">0</td>
+		<td id="second" onclick="gen(event)">0</td>
+		<td id="third" onclick="gen(event)">0</td>
+	</tr>
+</table>
+
+<div id="msg" onclick="reset()"></div>
+</body></html>
